@@ -25,7 +25,7 @@ beScript.onStart = function() {
 
 
     // Path
-    if (this.path !== null && this.path !== undefined && this.path instanceof STU.VirtualPath) {
+    if (this.path !== null && this.path !== undefined && this.path instanceof STU.PathActor) {
         console.log("Path param OK: " + this.path.name);
     } else {
         var pathName = 'Path 2';
@@ -71,7 +71,7 @@ beScript.onStart = function() {
 };
 
 beScript.followPath = function(iPath) {
-    if (iPath instanceof STU.VirtualPath) {
+    if (iPath instanceof STU.PathActor) {
         console.log("Start follow path: " + iPath.name);
         this._pathTarget = iPath;
     } else {
