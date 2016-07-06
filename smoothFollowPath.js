@@ -1,3 +1,12 @@
+/* Params
+path (Path:null)
+speed (double:0.1)
+smoothness (double: 0.5)
+frontAxis (string: 'x')
+followOrientation (bool: true)
+followOnClick (bool: false)
+*/
+
 beScript.onStart = function() {
     console.log("Init smoothFollowPathBeh");
 
@@ -28,13 +37,7 @@ beScript.onStart = function() {
     if (this.path !== null && this.path !== undefined && this.path instanceof STU.PathActor) {
         console.log("Path param OK: " + this.path.name);
     } else {
-        var pathName = 'Path 2';
-        this.path = this.getActor().getExperience().getActorByName(pathName);
-        if (this.path === null || this.path === undefined) {
-            console.error("Path param KO, could not get default path named" + pathName);
-        } else {
-            console.log("Path param KO, found default path named: " + pathName);
-        };
+        console.log("Path param KO");
     }
 
     // Speed
@@ -58,26 +61,38 @@ beScript.onStart = function() {
     } else {
         console.error("Invalid frontAxis parameter, default value to x");
         this.frontAxis = "x";
-    };
-
-
-    if (this.followOnClick === false) {
-        this.followPath(this.path);
-    };
+    }
 
     //this.getActor().addObjectListener(STU.MotionHasCompletedEvent, this, 'onMotionHasCompletedEvent');
-    this.getActor().addObjectListener(STU.ClickablePressEvent, this, 'onClick');
+    //this.getActor().addObjectListener(STU.ClickablePressEvent, this, 'onClick');
 
+    this.startFollowPath(this.path);
 };
 
-beScript.followPath = function(iPath) {
+beScript.startFollowPath = function(iPath) {
     if (iPath instanceof STU.PathActor) {
         console.log("Start follow path: " + iPath.name);
         this._pathTarget = iPath;
+
+        // init pos / rot
+        var dstPos = this._pathTarget.getValue(0.0);
+        var dstPosEps = this._pathTarget.getValue(0.1);
+        var frontVect = ThreeDS.Mathematics.subVectorFromVector(dstPosEps, dstPos);
+
+        if (frontVect.squareNorm() > 10e-4) {
+            var dstTransform = this._computeLookAtTransform(frontVect, this.getActor(), this.frontAxis);
+            dstTransform.vector = dstPos;
+            this.getActor().setTransform(dstTransform);
+        }
     } else {
         this._pathTarget = null;
     }
 
+    this._pathAmount = 0;
+};
+
+beScript.stopFollowPath = function() {
+    this._pathTarget = null;
     this._pathAmount = 0;
 };
 
@@ -111,7 +126,7 @@ beScript.followPathExec = function(iElapsedTime) {
         //set front vector tangent to path if no look at has been defined
         if (undefined === this._lookAtTarget || null === this._lookAtTarget) {
             var actorPosEps = this._pathTarget.getValue(Math.min(1, this._pathAmount + 10 * frameStep / pathLength));
-            var frontVect = ThreeDS.Mathematics.subVectorFromVector(actorPosEps, dstPos)
+            var frontVect = ThreeDS.Mathematics.subVectorFromVector(actorPosEps, dstPos);
 
             if (frontVect.squareNorm() > 10e-4) {
                 var dstTransform = this._computeLookAtTransform(frontVect, actor, this.frontAxis);
@@ -220,11 +235,6 @@ beScript._computeLookAtTransform = function(iFront, iActor, iActorFront) {
 
     //    iActor.setTransform(transform);
     return transform;
-};
-
-beScript.onClick = function() {
-    console.log("Starting path follow on click..");
-    beScript.followPath(this.path);
 };
 
 beScript.onStop = function() {};
