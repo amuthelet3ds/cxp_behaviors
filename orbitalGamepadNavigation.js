@@ -1,59 +1,45 @@
-/*PARAMS:
+/*
+NAME: OrbitalGamepadNavigation
+DESC: Smooth Orbital navigation behavior using Gamepad.
+FEATURES:
+  - Designed to be attached to a Camera Actor
+  - Smooth navigation
+  - Gamepad support
+  - zoom speed proportionnal to target distance (compatible with large scale navigations like Globe)
+  - Multiple camera targets, switchable at runtime using gamepad e1 button.
+
+VERSION: Developped on Creative Experience v2017x
+KNOWN limitations:
+- Tested on XBox360 gamepad only.
+
+PARAMS:
 
     target (3DActor: null)
-    verticalSensibility (Double: 0.01)
-    horizontalSensibility (Double: 0.01)
-    zoomSensibility (Double: 20.0)
-    smoothFactor (Double: 0.4)
+    verticalSensibility (Double: 0.05)
+    horizontalSensibility (Double: 0.05)
+    zoomSensibility (Double: 50.0)
+    smoothFactor (Double: 0.5)
     targets (Collection: null)
-
+    minDistance (Double: 100.0)
+    maxDistance (Double: 20000)
 */
-
-var renderManager = STU.RenderManager.getInstance();
-var gamepad = EP.Devices.getGamepad();
-var deadZone = 0.4;
-
-function SphericalCoordinates(type) {
-    this.type = type;
-    this.radius = 0;
-    this.polar = 0;
-    this.elevation = 0;
-}
-
-var apple = new SphericalCoordinates('Test');
-apple.radius = 2500;
-apple.polar = 0;
-apple.elevation = 0.0;
-
-var relatifCam = new SphericalCoordinates('relatifCam');
-relatifCam.radius = 0;
-relatifCam.polar = 0;
-relatifCam.elevation = 0;
-
-var vectorUp = new ThreeDS.Mathematics.Vector3D();
-vectorUp.setCoord(0, 1, 0);
-
-
-var frame;
-var InitDate = new Date().getTime();
-var time;
-var ElpasedTime;
-
-var lastFrameTime = 0;
-
-var dampingValue = 1;
-var boolNormalize = false;
-
-// clamp var
-var radiusClamp_min = 15;
-var radiusClamp_max = 50000;
-var elevationClamp_min = -0.9;
-var elevationClamp_max = 0.9;
-var polarClamp_min = -0.3;
-var polarClamp_max = 0.3;
 
 beScript.onStart = function() {
     //Will be called on the experience start.
+
+    // clamp var
+    this.minDistance = 15;
+    this.maxDistance = 50000;
+    this.elevationClamp_min = -0.9;
+    this.elevationClamp_max = 0.9;
+
+    this.gamepadDeadZone = 0.4;
+
+    this.apple = new this.SphericalCoordinates('Test');
+    this.apple.radius = 2500;
+    this.apple.polar = 0;
+    this.apple.elevation = 0.0;
+
     this.currentTarget = 0;
     if (this.targets === null || this.targets === undefined) {
         console.log("No target collection defined, using default target parameter as camera target");
@@ -67,19 +53,16 @@ beScript.onStart = function() {
         }
     }
 
-    this.desiredPos = cgmMath.addVectorToVector(this.target.getPosition(), this.SphericalToCartesian(apple.radius, apple.polar, apple.elevation));
+    this.desiredPos = cgmMath.addVectorToVector(this.target.getPosition(), this.SphericalToCartesian(this.apple.radius, this.apple.polar, this.apple.elevation));
     this.actor.setPosition(this.desiredPos);
     var targetPos = this.target.getPosition();
 
     this.lookAtFactor = 1;
 
-    this.boolInterested = false;
-    this.boolRun = false;
-
-    frame = 0;
-    lastFrameTime = time = new Date().getTime();
-
+    this.currentTime = new Date().getTime();
+    this.previousTime = this.currentTime;
 };
+
 beScript.onStop = function() {
     //Will be called on experience stop.
 };
@@ -87,57 +70,57 @@ beScript.onStop = function() {
 beScript.execute = function() {
     var gamepad = EP.Devices.getGamepad();
     //Insert your code here.
-    time = new Date().getTime();
-    this.deltaTime = (time - lastFrameTime) / 1000;
-    lastFrameTime = time;
-    ElpasedTime = time - InitDate;
+    this.currentTime = new Date().getTime();
+    this.deltaTime = (this.currentTime - this.previousTime) / 1000;
 
     /////////////////////////////////////////////////////
     //                                                 //
-    //          Gestion déplacement de la camera
+    //          Camero management
     //                                                 //
     /////////////////////////////////////////////////////
 
-    // On récupère les valeurs des axes X et Y du stick droit
+    // Getting right stick X and Y values
     var rightStick_Xvalue = gamepad.getAxisValue(EP.Gamepad.EAxis.eRSX);
     var rightStick_Yvalue = -gamepad.getAxisValue(EP.Gamepad.EAxis.eRSY);
     var rightTrigger = gamepad.getAxisValue(EP.Gamepad.EAxis.eRT);
     var leftTrigger = gamepad.getAxisValue(EP.Gamepad.EAxis.eLT);
 
-    if (rightStick_Xvalue < -deadZone || rightStick_Xvalue > deadZone) {
-        apple.polar = apple.polar - rightStick_Xvalue * this.horizontalSensibility;
+    if (rightStick_Xvalue < -this.gamepadDeadZone || rightStick_Xvalue > this.gamepadDeadZone) {
+        this.apple.polar = this.apple.polar - rightStick_Xvalue * this.horizontalSensibility;
     } else {
         rightStick_Xvalue = 0;
     }
 
-    if (rightStick_Yvalue < -deadZone || rightStick_Yvalue > deadZone) {
-        apple.elevation = this.clamp((apple.elevation + rightStick_Yvalue * this.verticalSensibility), elevationClamp_min, elevationClamp_max);
+    if (rightStick_Yvalue < -this.gamepadDeadZone || rightStick_Yvalue > this.gamepadDeadZone) {
+        this.apple.elevation = this.clamp((this.apple.elevation + rightStick_Yvalue * this.verticalSensibility), this.elevationClamp_min, this.elevationClamp_max);
     } else {
         rightStick_Yvalue = 0;
     }
 
-    if (rightTrigger < -deadZone / 2 || rightTrigger > deadZone / 2) {
-        apple.radius = this.clamp((apple.radius + rightTrigger * this.zoomSensibility), radiusClamp_min, radiusClamp_max);
+    if (rightTrigger < -this.gamepadDeadZone / 2 || rightTrigger > this.gamepadDeadZone / 2) {
+        this.apple.radius = this.clamp((this.apple.radius + rightTrigger * this.zoomSensibility), this.minDistance, this.maxDistance);
     } else {
         rightTrigger = 0;
     }
 
-    if (leftTrigger < -deadZone / 2 || leftTrigger > deadZone / 2) {
-        apple.radius = this.clamp((apple.radius - leftTrigger * this.zoomSensibility), radiusClamp_min, radiusClamp_max);
+    if (leftTrigger < -this.gamepadDeadZone / 2 || leftTrigger > this.gamepadDeadZone / 2) {
+        this.apple.radius = this.clamp((this.apple.radius - leftTrigger * this.zoomSensibility), this.minDistance, this.maxDistance);
     } else {
         leftTrigger = 0;
     }
 
-    // Déplacement Camera
-    var playerPos = this.target.getPosition();
-    this.desiredPos = cgmMath.addVectorToVector(playerPos, this.SphericalToCartesian(apple.radius, apple.polar, apple.elevation));
-    var actorPos = this.actor.getPosition();
-    var newDampPos = this.SimpleDamping(actorPos, this.desiredPos, this.smoothFactor);
+    // Camera movement
+    var targetPos = this.target.getPosition();
+    this.desiredPos = cgmMath.addVectorToVector(targetPos, this.SphericalToCartesian(this.apple.radius, this.apple.polar, this.apple.elevation));
+    var camPos = this.actor.getPosition();
+    var newDampPos = this.SimpleDamping(camPos, this.desiredPos, this.smoothFactor);
     this.actor.setPosition(newDampPos);
-    this.lookAt(playerPos);
+    this.lookAt(targetPos);
 
+    this.previousTime = this.currentTime;
 };
 
+// Change camera target dynamically
 beScript.changeTarget = function(iTargetNb) {
     console.log("Changing orbital camera target");
     var item;
@@ -160,6 +143,7 @@ beScript.changeTarget = function(iTargetNb) {
     }
 };
 
+// Target change on gamepad e1 button pressed
 beScript.onAllGamepadPress = function(iGamepadPressEvent) {
     console.log("Gamepad pressed: " + iGamepadPressEvent.getButton());
     if (iGamepadPressEvent.getButton() === EP.Gamepad.EButton.e1) {
@@ -169,7 +153,7 @@ beScript.onAllGamepadPress = function(iGamepadPressEvent) {
 
 /////////////////////////////////////////////////////
 //                                                 //
-//          Fonctions Utilitaires
+//          Utilities
 //                                                 //
 /////////////////////////////////////////////////////
 
@@ -192,7 +176,7 @@ beScript.CartesianToSpherical = function(cartCoords) {
         outPolar += Math.PI;
     var outElevation = Math.asin(cartCoords.y / outRadius);
 
-    var thisSc = new SphericalCoordinates("lo");
+    var thisSc = new this.SphericalCoordinates("lo");
     thisSc.radius = outRadius;
     thisSc.polar = outPolar;
     thisSc.elevation = outElevation;
@@ -266,4 +250,11 @@ beScript.clamp = function(value, min, max) {
 
 beScript.distance = function(vecA, vecB) {
     return Math.sqrt(Math.pow((vecA.x - vecB.x), 2) + Math.pow((vecA.y - vecB.y), 2) + Math.pow((vecA.z - vecB.z), 2));
+};
+
+bescript.SphericalCoordinates = function (type) {
+    this.type = type;
+    this.radius = 0;
+    this.polar = 0;
+    this.elevation = 0;
 };
