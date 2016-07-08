@@ -94,7 +94,7 @@ beScript.execute = function() {
 
     /////////////////////////////////////////////////////
     //                                                 //
-    //          Gestion déplacement de la camera                
+    //          Gestion déplacement de la camera
     //                                                 //
     /////////////////////////////////////////////////////
 
@@ -169,7 +169,7 @@ beScript.onAllGamepadPress = function(iGamepadPressEvent) {
 
 /////////////////////////////////////////////////////
 //                                                 //
-//          Fonctions Utilitaires               
+//          Fonctions Utilitaires
 //                                                 //
 /////////////////////////////////////////////////////
 
