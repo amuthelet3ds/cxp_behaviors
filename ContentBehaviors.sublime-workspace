@@ -1,0 +1,775 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"deactivateAl",
+				"deactivateAllDataGroup"
+			],
+			[
+				"initialTransfor",
+				"initialTransformNormal"
+			],
+			[
+				"emissive_color_",
+				"emissive_color_mad"
+			],
+			[
+				"ecm",
+				"emissive_color_M"
+			],
+			[
+				"physic",
+				"physicsCollection"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "smoothFollowPath.js",
+			"settings":
+			{
+				"buffer_size": 7975,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "orbitalGamepadNavigation.js",
+			"settings":
+			{
+				"buffer_size": 9197,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "taks",
+		"selected_items":
+		[
+			[
+				"taks",
+				"Tasks: New"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"push",
+				"Git: Push Current Branch"
+			],
+			[
+				"qui",
+				"Git: Quick Commit"
+			],
+			[
+				"git pu",
+				"Git: Push Current Branch"
+			],
+			[
+				"git qui",
+				"Git: Quick Commit"
+			],
+			[
+				"gitpus",
+				"Git: Push"
+			],
+			[
+				"gitq",
+				"Git: Quick Commit"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 664.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": true,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/EFF_DATA/Content/Behaviors"
+	],
+	"file_history":
+	[
+		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
+		"/C/inetpub/wwwroot/Bonobo.Git.Server/Web.config",
+		"//lw5-eff-dsy/HOME/WS/EnvCreation/419rel.bat",
+		"//lw5-eff-dsy/HOME/WS/EnvCreation/RunFromBSF_419REL.bat",
+		"/E/users/eff/git_rep/js/collabManagerScript.js",
+		"//lenov304dsy/demos/MWW/WestRockSimulation/CONFIDENTIAL_DATA.txt",
+		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/GitGutter/GitGutter.sublime-settings",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/prez/Speech Demo WCS.txt",
+		"/E/users/eff/CreativeExperience/demos/Farnborough/js/connection.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/public/js/index.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/lightBe.js",
+		"/E/users/eff/CreativeExperience/demos/Farnborough/js/data.js",
+		"/E/users/eff/CreativeExperience/demos/Farnborough/js/scenario.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/sunBeh.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/connection.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/displayRay.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/ViveManager.js",
+		"//phebedsy/HOME/WCS_WCS_VISUPRJ419/EXE_3DEXPERIENCE_WCS.bat",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/cam_orbital_gamepad.js",
+		"/E/WCS_FIXWCS_RTV/EXE_3DEXPERIENCE_WCS.bat",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/rotateCusto.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/todo.txt",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/server.js",
+		"/E/WS/EnvCreation/WCS_copyFromPhebedsy2.bat",
+		"//TETHYSDSY/Home/WCS_WCS_VISUPRJ419/CATEnv/MY_ENV_3DEXPERIENCE.txt",
+		"/E/WS/EnvCreation/RunFromBSF_419SWITCH.bat",
+		"/E/WS/EnvCreation/RunFromVisuPRJ.bat",
+		"/E/WCS_VISUPRJ/CATEnv/MY_ENV_3DEXPERIENCE.txt",
+		"/E/users/eff/CreativeExperience/demos/X Creative Experience Service/js/cam_orbital_gamepad.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/convertCgr/startODT.bat",
+		"//tethysdsy/HOME/WS/WCS_VISUPRJ419/VisualizationNRE.tst/FunctionTests/TestCases/ConvertCGR.sh",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/parallaxIBL.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/public/elements/my-contact/my-contact.html",
+		"/E/WCS_VISUPRJ/StartFixPart.bat",
+		"//phebedsy/HOME/WCS_FIXWCS_RTV/EXE_3DEXPERIENCE_WCS.bat",
+		"//phebedsy/HOME/WCS_FIXWCS/EXE_3DEXPERIENCE_WCS.bat",
+		"//phebedsy/HOME/WCS_FIXWCS/Launch_3DEXPERIENCE_WCS_FIXWCS.bat",
+		"//phebedsy/HOME/WCS_FIXWCS_RTV/Launch_3DEXPERIENCE_WCS_FIXWCS_RTV.bat",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/start.bat",
+		"/E/WS/EnvCreation/startVizuViewer_418Switch.bat",
+		"/E/WCS_VISUPRJ/Launch_3DEXPERIENCE_WCS - 27Mai.bat",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/convertCgr/ConvertCGR.sh",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Project/public/elements/my-contact/my-contact.html",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/ViveController.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/ViveInteractionContextBeh.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Project/server.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Project/public/js/index.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/dataPrep/ConvertCGR.sh",
+		"//tethysdsy/HOME/WCS_WCS_VISUPRJ419/EXE_3DEXPERIENCE_WCS.bat",
+		"//lenov304dsy/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Project/server.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Project/public/elements/my-material-menu/my-material-menu.html",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Project/public/elements/elements.html",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Project/views/index.html",
+		"//phebedsy/HOME/WCS_WCS_VISUPRJ419/Launch_3DEXPERIENCE_WCS_WCS_VISUPRJ419.bat",
+		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/JSLint/JSLint.sublime-settings",
+		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/follow.js",
+		"/E/DownloadOfR419/win_b64/webapps/StuDoc/StuHelicopterController.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/smoothFollowPath.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Behavior/resetPosition.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/ViveHeadset.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/ViveManipulator.js",
+		"/E/WCS_VISUPRJ/EXE_3DEXPERIENCE_WCS.bat",
+		"/E/WS/EnvCreation/RunFromBSF_418SWITCH - fixAR.bat",
+		"/E/WCS_VISUPRJ/Launch_3DEXPERIENCE_WCS.bat",
+		"/E/DownloadOfR419/win_b64/webapps/StuDoc/StuBehavior.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Behavior/connection.js",
+		"/E/DownloadOfR419/win_b64/webapps/StuRenderEngine/StuActor3D.js",
+		"/E/DownloadOfR419/win_b64/webapps/MathematicsES/TransformationJSImpl.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/ViveManager_gestionDeactivateViewport2.txt",
+		"/E/Public/siteCreative/cxpcontent/polymer/app/elements/my-lib-materials/my-lib-materials.html",
+		"/E/DownloadOfR419/Start3DEXPERIENCE.bat",
+		"//phebedsy/HOME/WCS_VISUPRJ/CATEnv/MY_ENV_3DEXPERIENCE.txt",
+		"/E/WCS_VISUPRJ/EXE_3DEXPERIENCE_CATEnv_Creation.bat",
+		"/E/WS/EnvCreation/WCS/Launch_3DEXPERIENCE_WCS.bat",
+		"//phebedsy/HOME/WCS_VISUPRJ/Launch_3DEXPERIENCE_WCS.bat",
+		"//phebedsy/HOME/WCS_VISUPRJ/EXE_3DEXPERIENCE_WCS.bat",
+		"/E/WS/EnvCreation/RunFromVisuPRJ_local.bat",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/collabManagerScript.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Project/views/index.jade",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/ViveTeleport.js",
+		"/E/WS/CXP_VIVE/win_b64/resources/graphic/Configuration_HTC_Vive.xml",
+		"/E/WS/EnvCreation/RunFromBSF_418SWITCH.bat",
+		"//nestordsy/Softs/admin/Tech Smith/CAMTASIA Studio/8.0/SN.txt",
+		"/E/RaaS/Script/1_Start_EKHypervisor.bat",
+		"/E/RaaS/CATTemp/BatchRendering/Storage/jetski_demoIIS/output.json",
+		"/E/RaaS/USAGE.txt",
+		"/E/RaaS/CATTemp/BatchRendering/Storage/jetski_demoIIS/info.json",
+		"/E/RaaS/CATTemp/BatchRendering/Storage/jetski_demoIIS/status.json",
+		"/E/RaaS/CATTemp/BatchRendering/Storage/jetski_demoIIS/frames.json",
+		"/E/RaaS/Script/2_Start_RaaS_exe.bat",
+		"/E/WS/EnvCreation/cloud_rendering/startScheduling.bat",
+		"/E/WS/EnvCreation/RunUpdateStoryboard.bat",
+		"/E/WS/EnvCreation/RunFromVRIPRJ_remote.bat",
+		"/E/WS/EnvCreation/startStoryboard.txt",
+		"/E/RaaS/CATTemp/BatchRendering/Storage/server.json",
+		"/E/RaaS/CATTemp/BatchRendering/Storage/cassiopeia_demoIIS/frames.json",
+		"/E/RaaS/CATTemp/BatchRendering/Storage/cassiopeia_demoIIS/output.json",
+		"/E/RaaS/RaaS/Script/2_Start_RaaS_exe.bat",
+		"/E/RaaS/RaaS/Script/1_Start_EKHypervisor.bat",
+		"/E/DownloadOfR419rel/Start3DEXPERIENCE.bat",
+		"/E/DownloadOfR419/win_b64/webapps/StuDoc/EPDevices.js",
+		"/E/DownloadOfR419/win_b64/webapps/EPInputs/EPDevices.js",
+		"/E/DownloadOfR419/win_b64/webapps/EPInputsServicesWeb/EPInputsServices.js",
+		"/C/Program Files (x86)/Steam/config/chaperone_info.vrchap",
+		"/C/Program Files (x86)/Steam/config/appconfig.json",
+		"/C/Program Files (x86)/Steam/config/lighthouse/lighthousedb.json",
+		"/C/Program Files (x86)/Steam/config/config.vdf",
+		"/E/DownloadOfR419/win_b64/webapps/EPEventServices/EPEventServices.js",
+		"/E/WS/EXPPRJ419_eff/win_b64/webapps/StuDoc/StuRenderManagerNA.js",
+		"/E/WS/EXPPRJ419_eff/win_b64/webapps/StuDoc/StuIntersection.js",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Project/start.bat",
+		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/info_render.txt",
+		"/E/WS/EnvCreation/RunUpdateEXPPRJ419 - Visu.bat",
+		"/E/WS/CXP_VIVE/win_b64/resources/graphic/Configuration_HTC_Vive - Copy.xml",
+		"/E/WS/CXP_VIVE/win_b64/resources/graphic/Configuration_HTC_Vive_old.xml",
+		"/E/WS/EnvCreation/startEXPPRJ419.bat",
+		"/E/WS/EnvCreation/RunUpdateEXPPRJ419 switch.bat",
+		"/E/WS/CXP_VIVE/StudioCreativeExpWorkbench/StudioCreativeExpWorkbenchRsc.m/src/resources/ApplicationFrame/AfrWorkshop/StudioWorkshop/AfrWorkbench/StudioCreativeExpWorkbench/StudioCreativeExpWorkbench.afr",
+		"/E/WS/EnvCreation/Download_from_thomas_419.bat",
+		"/E/WS/getVizuPRJ.bat",
+		"/E/WS/EnvCreation/RunFromBSF_419REL.bat",
+		"/E/WS/EnvCreation/RunFromBSF_419Vive.bat"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"smoothFactor",
+			"VirtualPath",
+			"_sendClickableEvent",
+			"animatedFishes",
+			"animateFishes",
+			"this.animatedFishes",
+			"this.animatetFishes",
+			"animatedFishes",
+			"anima",
+			"enableCollab",
+			"enableC",
+			"initFishes",
+			"this.initFishes",
+			"initFishes",
+			"setScale",
+			"\n			",
+			"setScale",
+			"initViveContextPosition",
+			"initialTransformScaled",
+			"initialTransformNormal",
+			"findSubactor",
+			"activatedTransfo",
+			"defaultPosActor",
+			"myControllerActor",
+			"myHeadActor",
+			"this.desiredPos",
+			"targetPos",
+			"this.target",
+			"changeTarget",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"Gamepad",
+			"gamepad",
+			"this.Player",
+			"this.scaleMode",
+			"myHeadActor",
+			"sensibi",
+			"player",
+			"Player",
+			"lookAt",
+			"sendData",
+			"this.sendData",
+			"sendData",
+			"this.sendData",
+			"sendData",
+			"teleport",
+			"this.room",
+			"deactivatedPos",
+			"this.wrapper",
+			"wrapper",
+			"this.room",
+			"displayRay",
+			";\n",
+			"activateRay",
+			"displayRay",
+			"Light",
+			"light",
+			"Light",
+			"light",
+			"initialTransformScaled",
+			"r419",
+			"activateSequence",
+			"teleport",
+			"Teleport",
+			"teleport",
+			"activateRay",
+			"displayRay",
+			"beScript",
+			"displayRay",
+			"controllerActor",
+			"activateRay",
+			"activateRayRemote",
+			"this.userID",
+			"activateRayRemote",
+			"getSubActors",
+			"state",
+			"getSubActors",
+			"activateUI",
+			"deactivateAllSequences",
+			"activateRay",
+			"users",
+			"Users",
+			"users",
+			"moveRay",
+			"activateRayRemote",
+			"light",
+			"ControllerActor",
+			"controllerActor",
+			"activateRayRemote",
+			"activateLightRemote",
+			"rayColor",
+			"frontVector",
+			"getFrontVector",
+			"_sendClickableEvent",
+			"getDeviceTransfo",
+			"transfoDevice",
+			"activateLightRemote",
+			"light",
+			"Light",
+			"LIGHT",
+			"light",
+			"Light",
+			"light",
+			"followPath",
+			"smoothFollowPath",
+			"animateFishes",
+			"getActor",
+			"_actorManic",
+			"StuGeomPrimitive_ISOManager",
+			"Color"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "smoothFollowPath.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7975,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								156,
+								156
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "orbitalGamepadNavigation.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9197,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								434,
+								434
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 136.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 148.0
+	},
+	"output.nodejs":
+	{
+		"height": 136.0
+	},
+	"pinned_build_system": "",
+	"project": "ContentBehaviors.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"stuhel",
+				"StuDoc\\StuHelicopterController.js"
+			],
+			[
+				"stubehav",
+				"StuDoc\\StuBehavior.js"
+			],
+			[
+				"trans",
+				"MathematicsES\\TransformationJSImpl.js"
+			],
+			[
+				"actor3d",
+				"StuRenderEngine\\StuActor3D.js"
+			],
+			[
+				"",
+				"StuRenderEngine\\StuActor3D.js"
+			],
+			[
+				"actor",
+				"StuRenderEngine\\StuActor3D.js"
+			],
+			[
+				"epdev",
+				"EPInputs\\EPDevices.js"
+			],
+			[
+				"epdevices",
+				"StuDoc\\EPDevices.js"
+			],
+			[
+				"epinput",
+				"EPInputsServicesWeb\\EPInputsServices.js"
+			],
+			[
+				"eventserv",
+				"EPEventServices\\EPEventServices.js"
+			],
+			[
+				"intersect",
+				"StuDoc\\StuIntersection.js"
+			],
+			[
+				"renderm",
+				"StuDoc\\StuRenderManagerNA.js"
+			],
+			[
+				"stugeom",
+				"StuWeb\\StuGeometry.js"
+			],
+			[
+				"stumotion",
+				"StuDoc\\StuMotion.js"
+			],
+			[
+				"sturenderma",
+				"StuRenderEngine\\StuRenderManagerNA.js"
+			],
+			[
+				"renderma",
+				"StuRenderEngine\\StuRenderManagerNA.js"
+			],
+			[
+				"followm",
+				"StuMiscContent\\StuFollowMouseBe.js"
+			],
+			[
+				"uiact",
+				"StuCID\\StuUIActor.js"
+			],
+			[
+				"primitive",
+				"StuDoc\\StuPrimitiveActor.js"
+			],
+			[
+				"cube",
+				"StuDoc\\StuCubeActor.js"
+			],
+			[
+				"stuhuman",
+				"StuHuman\\StuHumanController.js"
+			],
+			[
+				"stuexp",
+				"StuModel\\StuExperience.js"
+			],
+			[
+				"stuinsta",
+				"StuModel\\StuInstance.js"
+			],
+			[
+				"stuactor",
+				"StuRenderEngine\\StuActor3D.js"
+			],
+			[
+				"stuexper",
+				"StuModel\\StuExperience.js"
+			],
+			[
+				"stuex",
+				"StuModel\\StuExperience.js"
+			],
+			[
+				"stucarc",
+				"StuMiscContent\\StuCarController.js"
+			],
+			[
+				"gamepad",
+				"EPInputs\\EPGamepad.js"
+			],
+			[
+				"stupath",
+				"StuVirtualObjects\\StuPathActor.js"
+			],
+			[
+				"sturigid",
+				"StuPhysic\\StuPhysicRigidBody.js"
+			],
+			[
+				"stuplm",
+				"StuMiscContent\\StuPLMInfoBalloonBe.js"
+			],
+			[
+				"stuhighli",
+				"StuMiscContent\\StuHighlightBe.js"
+			],
+			[
+				"stuhighlight",
+				"StuMiscContent\\StuHighlightBe.js"
+			],
+			[
+				"stucu",
+				"StuGeometricPrimitives\\StuCubeActor.js"
+			],
+			[
+				"traff",
+				"StuMiscContent\\StuTrafficManager.js"
+			],
+			[
+				"stucamer",
+				"StuRenderEngine\\StuCameraNa.js"
+			],
+			[
+				"stuactor3d",
+				"StuRenderEngine\\StuActor3D.js"
+			],
+			[
+				"sturender",
+				"StuRenderEngine\\StuRenderManagerNA.js"
+			],
+			[
+				"stuacto",
+				"StuModel\\StuActor.js"
+			],
+			[
+				"array",
+				"UWA2\\js\\Array.js"
+			],
+			[
+				"stuinst",
+				"StuModel\\StuInstance.js"
+			],
+			[
+				"sturenderman",
+				"StuRenderEngine\\StuRenderManagerNA.js"
+			],
+			[
+				"stucolor",
+				"StuRenderEngine\\StuColor.js"
+			],
+			[
+				"arrowac",
+				"StuGeometricPrimitives\\StuArrowActor.js"
+			],
+			[
+				"rendermana",
+				"StuRenderEngine\\StuRenderManagerNA.js"
+			],
+			[
+				"carcontr",
+				"StuMiscContent\\StuCarController.js"
+			],
+			[
+				"humanmotion",
+				"StuHuman\\StuHumanMotion.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"E:\\EFF_DATA\\Content\\Demos\\WorldCitySummit\\DemoWorldCitySummit.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 226.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
