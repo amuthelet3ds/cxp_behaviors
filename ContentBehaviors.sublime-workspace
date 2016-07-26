@@ -28,18 +28,10 @@
 	"buffers":
 	[
 		{
-			"file": "smoothFollowPath.js",
+			"file": "/E/WS/EnvCreation/419rel.bat",
 			"settings":
 			{
-				"buffer_size": 7975,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "orbitalGamepadNavigation.js",
-			"settings":
-			{
-				"buffer_size": 9197,
+				"buffer_size": 711,
 				"line_ending": "Windows"
 			}
 		}
@@ -128,6 +120,11 @@
 	],
 	"file_history":
 	[
+		"/E/EFF_DATA/Content/Behaviors/smoothFollowPath.js",
+		"/E/EFF_DATA/Content/Behaviors/orbitalGamepadNavigation.js",
+		"/E/WCS_FIXWCS_RTV/CATEnv/MY_ENV_3DEXPERIENCE.txt",
+		"/E/WS/EnvCreation/_RunUpdateEXPPRJ419 rel.bat",
+		"/E/WCS_VISUPRJ/EXE_3DEXPERIENCE_WCS.bat",
 		"/C/Users/eff/AppData/Roaming/Sublime Text 3/Packages/PlainTasks/messages/Tutorial.todo",
 		"/C/inetpub/wwwroot/Bonobo.Git.Server/Web.config",
 		"//lw5-eff-dsy/HOME/WS/EnvCreation/419rel.bat",
@@ -195,7 +192,6 @@
 		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/server/Package_baseNodeJS/Package/Behavior/resetPosition.js",
 		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/ViveHeadset.js",
 		"/E/users/eff/CreativeExperience/demos/WorldCitySummit/js/ViveManipulator.js",
-		"/E/WCS_VISUPRJ/EXE_3DEXPERIENCE_WCS.bat",
 		"/E/WS/EnvCreation/RunFromBSF_418SWITCH - fixAR.bat",
 		"/E/WCS_VISUPRJ/Launch_3DEXPERIENCE_WCS.bat",
 		"/E/DownloadOfR419/win_b64/webapps/StuDoc/StuBehavior.js",
@@ -251,11 +247,7 @@
 		"/E/WS/CXP_VIVE/win_b64/resources/graphic/Configuration_HTC_Vive_old.xml",
 		"/E/WS/EnvCreation/startEXPPRJ419.bat",
 		"/E/WS/EnvCreation/RunUpdateEXPPRJ419 switch.bat",
-		"/E/WS/CXP_VIVE/StudioCreativeExpWorkbench/StudioCreativeExpWorkbenchRsc.m/src/resources/ApplicationFrame/AfrWorkshop/StudioWorkshop/AfrWorkbench/StudioCreativeExpWorkbench/StudioCreativeExpWorkbench.afr",
-		"/E/WS/EnvCreation/Download_from_thomas_419.bat",
-		"/E/WS/getVizuPRJ.bat",
-		"/E/WS/EnvCreation/RunFromBSF_419REL.bat",
-		"/E/WS/EnvCreation/RunFromBSF_419Vive.bat"
+		"/E/WS/CXP_VIVE/StudioCreativeExpWorkbench/StudioCreativeExpWorkbenchRsc.m/src/resources/ApplicationFrame/AfrWorkshop/StudioWorkshop/AfrWorkbench/StudioCreativeExpWorkbench/StudioCreativeExpWorkbench.afr"
 	],
 	"find":
 	{
@@ -419,62 +411,29 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "smoothFollowPath.js",
+					"file": "/E/WS/EnvCreation/419rel.bat",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7975,
+						"buffer_size": 711,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								156,
-								156
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "orbitalGamepadNavigation.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9197,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								434,
-								434
-							]
-						],
-						"settings":
-						{
-							"open_with_edit": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

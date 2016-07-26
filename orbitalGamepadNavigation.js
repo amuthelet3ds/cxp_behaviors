@@ -17,7 +17,7 @@ PARAMS:
     target (3DActor: null)
     verticalSensibility (Double: 0.05)
     horizontalSensibility (Double: 0.05)
-    zoomSensibility (Double: 50.0)
+    zoomSensibility (Double: 100.0)
     smoothFactor (Double: 0.5)
     targets (Collection: null)
     minDistance (Double: 100.0)
@@ -28,8 +28,6 @@ beScript.onStart = function() {
     //Will be called on the experience start.
 
     // clamp var
-    this.minDistance = 15;
-    this.maxDistance = 50000;
     this.elevationClamp_min = -0.9;
     this.elevationClamp_max = 0.9;
 
@@ -252,7 +250,7 @@ beScript.distance = function(vecA, vecB) {
     return Math.sqrt(Math.pow((vecA.x - vecB.x), 2) + Math.pow((vecA.y - vecB.y), 2) + Math.pow((vecA.z - vecB.z), 2));
 };
 
-bescript.SphericalCoordinates = function (type) {
+beScript.SphericalCoordinates = function (type) {
     this.type = type;
     this.radius = 0;
     this.polar = 0;
