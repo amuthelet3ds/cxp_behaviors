@@ -7,13 +7,10 @@ FEATURES:
   - Gamepad support
   - zoom speed proportionnal to target distance (compatible with large scale navigations like Globe)
   - Multiple camera targets, switchable at runtime using gamepad e1 button.
-
 VERSION: Developped on Creative Experience v2017x
 KNOWN limitations:
 - Tested on XBox360 gamepad only.
-
 PARAMS:
-
     target (3DActor: null)
     verticalSensibility (Double: 0.05)
     horizontalSensibility (Double: 0.05)
@@ -76,44 +73,63 @@ beScript.execute = function() {
     //          Camero management
     //                                                 //
     /////////////////////////////////////////////////////
+    if (this.isActive === true) {
+        // Getting right stick X and Y values
+        var rightStick_Xvalue = gamepad.getAxisValue(EP.Gamepad.EAxis.eRSX);
+        var rightStick_Yvalue = -gamepad.getAxisValue(EP.Gamepad.EAxis.eRSY);
+        var rightTrigger = gamepad.getAxisValue(EP.Gamepad.EAxis.eRT);
+        var leftTrigger = gamepad.getAxisValue(EP.Gamepad.EAxis.eLT);
 
-    // Getting right stick X and Y values
-    var rightStick_Xvalue = gamepad.getAxisValue(EP.Gamepad.EAxis.eRSX);
-    var rightStick_Yvalue = -gamepad.getAxisValue(EP.Gamepad.EAxis.eRSY);
-    var rightTrigger = gamepad.getAxisValue(EP.Gamepad.EAxis.eRT);
-    var leftTrigger = gamepad.getAxisValue(EP.Gamepad.EAxis.eLT);
+        if (rightStick_Xvalue < -this.gamepadDeadZone || rightStick_Xvalue > this.gamepadDeadZone) {
+            this.apple.polar = this.apple.polar - rightStick_Xvalue * this.horizontalSensibility;
+        } else {
+            rightStick_Xvalue = 0;
+        }
 
-    if (rightStick_Xvalue < -this.gamepadDeadZone || rightStick_Xvalue > this.gamepadDeadZone) {
-        this.apple.polar = this.apple.polar - rightStick_Xvalue * this.horizontalSensibility;
-    } else {
-        rightStick_Xvalue = 0;
+        if (rightStick_Yvalue < -this.gamepadDeadZone || rightStick_Yvalue > this.gamepadDeadZone) {
+            this.apple.elevation = this.clamp((this.apple.elevation + rightStick_Yvalue * this.verticalSensibility), this.elevationClamp_min, this.elevationClamp_max);
+        } else {
+            rightStick_Yvalue = 0;
+        }
+
+        var distToTarget = (this.target.getPosition().sub(this.getActor().getPosition())).norm();
+        if (distToTarget < this.range01Threshold) {
+            this.range01.visible = false;
+            this.range02.visible = false;
+            this.range03.visible = false;
+        }
+        if (distToTarget > this.range01Threshold && distToTarget < this.range02Threshold) {
+            this.range01.visible = true;
+            this.range02.visible = false;
+            this.range03.visible = false;
+        }
+        if (distToTarget > this.range02Threshold && distToTarget < this.range03Threshold) {
+            this.range01.visible = true;
+            this.range02.visible = true;
+            this.range03.visible = true;
+        }
+
+        if (rightTrigger < -this.gamepadDeadZone / 2 || rightTrigger > this.gamepadDeadZone / 2) {
+            this.apple.radius = this.clamp((this.apple.radius + rightTrigger * this.zoomSensibility * distToTarget / 1000.0), this.minDistance, this.maxDistance);
+        } else {
+            rightTrigger = 0;
+        }
+
+        if (leftTrigger < -this.gamepadDeadZone / 2 || leftTrigger > this.gamepadDeadZone / 2) {
+            this.apple.radius = this.clamp((this.apple.radius - leftTrigger * this.zoomSensibility * distToTarget / 1000.0), this.minDistance, this.maxDistance);
+        } else {
+            leftTrigger = 0;
+        }
+
+        // Camera movement
+        var targetPos = this.target.getPosition();
+        this.desiredPos = cgmMath.addVectorToVector(targetPos, this.SphericalToCartesian(this.apple.radius, this.apple.polar, this.apple.elevation));
+        var camPos = this.actor.getPosition();
+        var newDampPos = this.SimpleDamping(camPos, this.desiredPos, this.smoothFactor);
+        this.actor.setPosition(newDampPos);
+        this.lookAt(targetPos);
+
     }
-
-    if (rightStick_Yvalue < -this.gamepadDeadZone || rightStick_Yvalue > this.gamepadDeadZone) {
-        this.apple.elevation = this.clamp((this.apple.elevation + rightStick_Yvalue * this.verticalSensibility), this.elevationClamp_min, this.elevationClamp_max);
-    } else {
-        rightStick_Yvalue = 0;
-    }
-
-    if (rightTrigger < -this.gamepadDeadZone / 2 || rightTrigger > this.gamepadDeadZone / 2) {
-        this.apple.radius = this.clamp((this.apple.radius + rightTrigger * this.zoomSensibility), this.minDistance, this.maxDistance);
-    } else {
-        rightTrigger = 0;
-    }
-
-    if (leftTrigger < -this.gamepadDeadZone / 2 || leftTrigger > this.gamepadDeadZone / 2) {
-        this.apple.radius = this.clamp((this.apple.radius - leftTrigger * this.zoomSensibility), this.minDistance, this.maxDistance);
-    } else {
-        leftTrigger = 0;
-    }
-
-    // Camera movement
-    var targetPos = this.target.getPosition();
-    this.desiredPos = cgmMath.addVectorToVector(targetPos, this.SphericalToCartesian(this.apple.radius, this.apple.polar, this.apple.elevation));
-    var camPos = this.actor.getPosition();
-    var newDampPos = this.SimpleDamping(camPos, this.desiredPos, this.smoothFactor);
-    this.actor.setPosition(newDampPos);
-    this.lookAt(targetPos);
 
     this.previousTime = this.currentTime;
 };
@@ -143,9 +159,9 @@ beScript.changeTarget = function(iTargetNb) {
 
 // Target change on gamepad e1 button pressed
 beScript.onAllGamepadPress = function(iGamepadPressEvent) {
-    console.log("Gamepad pressed: " + iGamepadPressEvent.getButton());
+    //console.log("Gamepad pressed: " + iGamepadPressEvent.getButton());
     if (iGamepadPressEvent.getButton() === EP.Gamepad.EButton.e1) {
-        this.changeTarget();
+        //this.changeTarget();
     }
 };
 
@@ -250,9 +266,17 @@ beScript.distance = function(vecA, vecB) {
     return Math.sqrt(Math.pow((vecA.x - vecB.x), 2) + Math.pow((vecA.y - vecB.y), 2) + Math.pow((vecA.z - vecB.z), 2));
 };
 
-beScript.SphericalCoordinates = function (type) {
+beScript.SphericalCoordinates = function(type) {
     this.type = type;
     this.radius = 0;
     this.polar = 0;
     this.elevation = 0;
+};
+
+beScript.enableCamera = function() {
+    this.isActive = true;
+};
+
+beScript.disableCamera = function() {
+    this.isActive = false;
 };
