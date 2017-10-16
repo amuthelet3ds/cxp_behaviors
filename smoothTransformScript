@@ -1,0 +1,146 @@
+// Params
+// targetActor (3DActor)
+// duration (double)
+// followOrientation (bool:true)
+// positionOffset (Vector3D): 0,0,0
+// easingFunctionHolder (LogicalActor)
+// easingFunctionName (string)
+
+beScript.onStart = function() {
+    //console.log("Init smoothFollowBeh");
+
+    this.followTarget = false;
+    this.offsetTransform = null;
+
+    // target param
+    if (this.targetActor !== null && this.targetActor !== undefined && this.targetActor instanceof STU.Actor3D) {
+        //console.log("Target found named: " + this.targetActor.name);
+    } else {
+        console.error("Invalid smoothTransform target parameter");
+        //this.targetActor = this.getActor().getExperience().getActorByName(pathName);
+    }
+
+    // follow orientation param
+    if (this.followOrientation !== null && this.followOrientation !== undefined && typeof this.followOrientation === 'boolean') {
+        //console.log("FollowOrientation param: " + this.followOrientation);
+    } else {
+        console.error("Invalid FollowOrientation parameter");
+        this.followOrientation = false;
+    }
+
+    // PositionOffset param
+    if (this.positionOffset !== null && this.positionOffset !== undefined && this.positionOffset instanceof ThreeDS.Mathematics.Vector3D) {
+        //console.log("positionOffset param: " + this.positionOffset.x + " ," + this.positionOffset.y + ", " + this.positionOffset.z);
+    } else {
+        console.error("Invalid positionOffset parameter");
+        this.positionOffset = new ThreeDS.Mathematics.Vector3D();
+        this.positionOffset.setCoord(0.0, 0.0, 0.0);
+    }
+
+    // Penner easing functions
+    if (this.easingFunctionsHolder === null || this.easingFunctionsHolder === undefined) {
+        console.error("Could not find easing Functions holder");
+    } else {
+        if (this.easingFunctionsHolder.easingFunctionsScript === null || this.easingFunctionsHolder.easingFunctionsScript === undefined) {
+            console.error("Could not find easingFunctionsScript on easingFunctionsHolder");
+        } else {
+            this.easingFunctionsHolder.easingFunctionsScript.init();
+            this.easing = this.easingFunctionsHolder.easingFunctionsScript.easing;
+            //console.log(this.easing);
+        }
+    }
+
+    if (this.easingFunctionName === null || this.easingFunctionName === undefined) {
+        var easingFunctionName = "easeInOutSine";
+        console.error("No easingFunction name defined, init to: " + easingFunctionName);
+        this.easingFunctionName = easingFunctionName;
+    }
+
+    if (this.duration === null || this.duration === undefined) {
+        var duration = 5000;
+        console.error("duration not defined, init to: " + duration);
+        this.duration = duration;
+    }
+
+    this.positionOffset = new ThreeDS.Mathematics.Vector3D();
+
+    // keep init Offset param
+    if (this.keepInitOffset !== null && this.keepInitOffset !== undefined && typeof this.keepInitOffset === 'boolean') {
+        //console.log("keepInitOffset param: " + this.keepInitOffset);
+        this.offsetTransform = this.getActor().getTransform(this.targetActor);
+    } else {
+        console.error("Invalid keepInitOffset parameter");
+        this.keepInitOffset = false;
+    }
+
+    this.currentTime = new Date().getTime();
+    this.startTransformTime = new Date().getTime();
+};
+
+beScript.onStop = function() {};
+
+beScript.startTransform = function(iTarget) {
+    //    console.log("Starting transfo");
+    this.startTransformTime = new Date().getTime();
+    this.targetActor = iTarget;
+    if (iTarget === undefined) {
+        this.targetActor = null;
+    }
+    this.followTarget = true;
+    return;
+};
+
+beScript.stopTransform = function() {
+    this.followTarget = true;
+};
+
+beScript.execute = function() {
+    this.currentTime = new Date().getTime();
+
+    if (this.followTarget === true) {
+        var actor = this.getActor();
+
+        // Src
+        var srcPos = actor.getPosition();
+        var srcQuat = new ThreeDS.Mathematics.Quaternion();
+        srcQuat.rotMatrixToQuaternion(actor.getTransform().matrix);
+        //console.log("SrcPos: " + srcPos.x + ", " + srcPos.y + ", " + srcPos.z);
+
+        //Dst
+        var dstPos = this.targetActor.getPosition();
+        var dstQuat = new ThreeDS.Mathematics.Quaternion();
+        dstQuat.rotMatrixToQuaternion(this.targetActor.getTransform().matrix);
+        if (this.keepInitOffset === true) {
+            dstPos.addVectorToVector(this.targetActor.getTransform().applyToVector(this.offsetTransform.vector));
+
+            var offsetQuat = new ThreeDS.Mathematics.Quaternion();
+            offsetQuat.rotMatrixToQuaternion(this.offsetTransform.matrix);
+            dstQuat = dstQuat.multiplyQuatByQuat(offsetQuat);
+        }
+        // console.log("DstPos: " + dstPos.x + ", " + dstPos.y + ", " + dstPos.z);
+
+        //New
+        var worldPositionOffset = this.targetActor.getTransform().applyToVector(this.positionOffset);
+        var newPos = srcPos.clone().addVectorToVector(worldPositionOffset);
+
+        var elapsedTimeTransfo = this.currentTime - this.startTransformTime;
+        var factor = this.easing[this.easingFunctionName]( /*x*/ null, /*t*/ elapsedTimeTransfo, /*b*/ 0, /*c*/ 1, /*d*/ this.duration);
+        //console.log("Factor: " + factor);
+        if (factor >= 0.95) {
+            factor = 1.0;
+            this.followTarget = false;
+        }
+        newPos = newPos.lerp(dstPos, factor);
+        var newQuat = srcQuat.clone();
+        newQuat = newQuat.slerp(dstQuat.clone(), factor);
+        //console.log("NewPos: " + newPos.x + ", " + newPos.y + ", " + newPos.z);
+
+        var newTransfo = actor.getTransform();
+        if (this.followOrientation === true) {
+            newTransfo.matrix = newQuat.quaternionToRotMatrix();
+        }
+        newTransfo.vector = newPos.clone();
+        //actor.setPosition(newPos);
+        actor.setTransform(newTransfo);
+    }
+};
