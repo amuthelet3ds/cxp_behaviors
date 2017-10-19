@@ -11,6 +11,7 @@ VERSION: Developped on Creative Experience v2017x
 KNOWN limitations:
 - Tested on XBox360 gamepad only.
 PARAMS:
+    isActive (boolean: true)
     target (3DActor: null)
     verticalSensibility (Double: 0.05)
     horizontalSensibility (Double: 0.05)
