@@ -3,8 +3,8 @@
 // duration (double)
 // followOrientation (bool:true)
 // positionOffset (Vector3D): 0,0,0
-// easingFunctionHolder (LogicalActor)
-// easingFunctionName (string)
+// easingFunctionsHolder (LogicalActor)
+// easingFunctionsName (string)
 
 beScript.onStart = function() {
     //console.log("Init smoothFollowBeh");
@@ -87,6 +87,7 @@ beScript.startTransform = function(iTarget) {
         this.targetActor = null;
     }
     this.followTarget = true;
+    this.startTransformation = this.actor.getTransform();
     return;
 };
 
@@ -101,9 +102,9 @@ beScript.execute = function() {
         var actor = this.getActor();
 
         // Src
-        var srcPos = actor.getPosition();
+        var srcPos = this.startTransformation.vector;
         var srcQuat = new ThreeDS.Mathematics.Quaternion();
-        srcQuat.rotMatrixToQuaternion(actor.getTransform().matrix);
+        srcQuat.rotMatrixToQuaternion(this.startTransformation.matrix);
         //console.log("SrcPos: " + srcPos.x + ", " + srcPos.y + ", " + srcPos.z);
 
         //Dst
@@ -126,7 +127,7 @@ beScript.execute = function() {
         var elapsedTimeTransfo = this.currentTime - this.startTransformTime;
         var factor = this.easing[this.easingFunctionName]( /*x*/ null, /*t*/ elapsedTimeTransfo, /*b*/ 0, /*c*/ 1, /*d*/ this.duration);
         //console.log("Factor: " + factor);
-        if (factor >= 0.95) {
+        if (factor >= 0.999) {
             factor = 1.0;
             this.followTarget = false;
         }
